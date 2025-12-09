@@ -1,0 +1,117 @@
+/*/*
+ * Cyber-Glow Theme CSS File (styles.css) - V2.0
+ * Includes CSS Variables, advanced hover effects, and responsive design updates.
+ */
+
+/* --- 0. CSS Variables (Themed Colors) --- */
+:root {
+    --color-dark-base: #03041c; /* Deep Navy/Black */
+    --color-neon-cyan: #00ffff;
+    --color-neon-magenta: #ff00ff;
+    --color-text-light: #e0e0e0;
+    --color-panel-bg: rgba(30, 0, 40, 0.6); /* Semi-transparent panel background */
+}
+
+/* --- 1. Base Setup (Quantum Grid Flow Animation) --- */
+body {
+    background-color: var(--color-dark-base); 
+    overflow-x: hidden; 
+    margin: 0;
+    min-height: 100vh; 
+    width: 100vw;
+    /* Neon Glow & Grid Pattern */
+    background-image:
+        radial-gradient(at 20% 70%, var(--color-neon-magenta)40, transparent 60%), 
+        radial-gradient(at 80% 30%, var(--color-neon-cyan)30, transparent 50%), 
+        repeating-linear-gradient(0deg, #1f013305, #1f013305 2px, transparent 2px, transparent 100px); 
+    background-size: 
+        150% 150%, 
+        100% 100%, 
+        100% 100%;
+    animation: flow 20s infinite linear alternate;
+    font-family: 'Consolas', 'Courier New', monospace; 
+    color: var(--color-text-light); 
+    text-rendering: optimizeLegibility; /* Improves font display */
+}
+
+/* Futuristic Text Selection */
+::selection {
+    background: var(--color-neon-magenta);
+    color: var(--color-dark-base);
+}
+
+@keyframes flow {
+    0% {
+        background-position: 0% 0%, 0% 0%, 0% 0%;
+    }
+    100% {
+        background-position: 100% 100%, 0% 0%, 0% 0%;
+    }
+}
+
+/* --- 2. Header & Navigation (Responsive Update) --- */
+header {
+    background: rgba(17, 17, 17, 0.8); 
+    color: var(--color-neon-cyan); 
+    display: flex;
+    flex-wrap: wrap; /* Allows wrapping on smaller screens */
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 40px;
+    border-bottom: 2px solid var(--color-neon-magenta); 
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.4); 
+    z-index: 1000;
+}
+
+header h1 {
+    margin: 0;
+    color: var(--color-neon-cyan);
+    font-size: 1.5em;
+    text-shadow: 0 0 5px var(--color-neon-cyan);
+    flex-basis: 100%; 
+    text-align: center;
+    margin-bottom: 10px;
+}
+@media (min-width: 768px) {
+    header h1 {
+        flex-basis: auto;
+        text-align: left;
+        margin-bottom: 0;
+    }
+}
+
+nav {
+    flex-grow: 1;
+    text-align: right;
+    width: 100%;
+}
+
+nav a {
+    color: var(--color-neon-magenta); 
+    margin: 0 10px;
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+nav a:hover {
+    color: var(--color-neon-cyan); 
+    text-shadow: 0 0 8px var(--color-neon-cyan); 
+}
+
+
+
+.happy {
+    background: linear-gradient(90deg, var(--color-neon-magenta), var(--color-neon-cyan)); 
+    color: var(--color-dark-base); 
+    text-align: center;
+    padding: 15px;
+    margin: 30px auto;
+    max-width: 800px;
+    border-radius: 5px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    box-shadow: 0 0 20px rgba(255, 0, 255, 0.7); 
+}
