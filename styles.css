@@ -1,71 +1,72 @@
-/* --- 1. Global Reset & Base Styles --- */
+/* --- 1. Global Reset & Performance --- */
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box; /* Ensures padding doesn't break layout width */
+    box-sizing: border-box; /* Crucial for KCSE: prevents padding from expanding element width */
 }
 
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Segoe UI', Arial, sans-serif;
     background-color: #f0f2f5;
+    color: #333;
+    line-height: 1.6;
     overflow-x: hidden;
 }
 
-/* --- 2. Welcome Banner (Marquee) --- */
+/* --- 2. Navigation & Header --- */
 .welcome-banner {
-    background-color: #00796b; /* Darker teal for contrast */
+    background-color: #00796b;
     color: white;
-    padding: 8px 0;
-    font-size: 14px;
+    padding: 10px 0;
+    font-size: 0.9rem;
+    text-align: center;
 }
 
-/* --- 3. Header & Navigation (Flexbox Layout) --- */
 header {
-    background-color: #009688; /* Primary Teal */
-    color: white;
-    padding: 16px 5%; /* 5% padding keeps items away from screen edges */
+    background-color: #009688;
+    padding: 15px 5%;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 .top-nav {
     display: flex;
-    justify-content: space-between; /* Pushes Nav to far LEFT and Logo to far RIGHT */
+    justify-content: space-between;
     align-items: center;
 }
 
 .logo {
-    font-size: 28px;
+    font-size: 1.8rem;
     font-weight: bold;
-    letter-spacing: 1px;
+    color: white;
 }
 
 nav {
     display: flex;
-    gap: 15px; /* Space between the Home and Cart buttons */
+    gap: 12px;
 }
 
 nav a {
-    background-color: #fff3e0; /* Soft peach */
-    color: #6d4c41;           /* Dark brown */
-    padding: 10px 22px;
+    background-color: #fff3e0;
+    color: #6d4c41;
+    padding: 8px 20px;
     text-decoration: none;
-    border-radius: 30px;      /* Rounded pill shape */
-    font-size: 14px;
+    border-radius: 25px;
+    font-size: 0.9rem;
     font-weight: bold;
-    transition: transform 0.2s, background-color 0.3s;
+    transition: all 0.3s ease;
 }
 
 nav a:hover {
     background-color: #ffe0b2;
-    transform: scale(1.05);   /* Subtle pop-out effect */
+    transform: translateY(-2px);
 }
 
-/* --- 4. Main Section (Background & Hero) --- */
+/* --- 3. Hero Section (Parallax) --- */
 .happy {
-    min-height: 80vh;
+    min-height: 75vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    /* High-quality background image with a dark overlay */
     background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
                 url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1300&q=80');
     background-size: cover;
@@ -73,39 +74,35 @@ nav a:hover {
     background-attachment: fixed; /* Parallax effect */
 }
 
-/* --- 5. Glassmorphism Product Cards --- */
+/* --- 4. Product Grid & Glass Cards --- */
 .unique-container {
     display: flex;
-    flex-wrap: wrap; /* Allows cards to drop to next line on mobile */
+    flex-wrap: wrap; /* Secret for Android: allows stacking */
     gap: 30px;
     justify-content: center;
-    padding: 20px;
+    padding: 40px 20px;
 }
 
 .glass-card {
-    background: rgba(255, 255, 255, 0.15); /* Semi-transparent white */
-    backdrop-filter: blur(12px);          /* The "frosted glass" effect */
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(15px); /* The frosted glass effect */
+    -webkit-backdrop-filter: blur(15px); /* Safari support */
     border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 20px;
-    width: 300px;
+    width: 320px;
     overflow: hidden;
-    color: white;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-    transition: 0.3s ease;
+    position: relative; /* Essential for the price-badge position */
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
 }
 
 .glass-card:hover {
-    transform: translateY(-10px);
-}
-
-.card-image {
-    position: relative;
-    height: 200px;
+    transform: scale(1.03);
 }
 
 .card-image img {
     width: 100%;
-    height: 100%;
+    height: 220px;
     object-fit: cover;
 }
 
@@ -114,21 +111,24 @@ nav a:hover {
     top: 15px;
     right: 15px;
     background: #009688;
-    padding: 6px 12px;
+    color: white;
+    padding: 6px 14px;
     border-radius: 8px;
     font-weight: bold;
-    font-size: 14px;
+    font-size: 0.85rem;
+    z-index: 10;
 }
 
 .card-details {
-    padding: 20px;
+    padding: 25px;
     text-align: center;
+    color: white;
 }
 
 .unique-btn {
-    display: block;
+    display: inline-block;
     margin-top: 15px;
-    padding: 12px;
+    padding: 12px 30px;
     background-color: white;
     color: #009688;
     text-decoration: none;
@@ -138,15 +138,34 @@ nav a:hover {
 }
 
 .unique-btn:hover {
-    background-color: #009688;
-    color: white;
+    background-color: #e0f2f1;
+}
+
+/* --- 5. Mobile Responsiveness (Android) --- */
+@media screen and (max-width: 600px) {
+    header {
+        padding: 15px 2%;
+    }
+
+    .top-nav {
+        flex-direction: column; /* Stack logo and nav vertically */
+        gap: 15px;
+    }
+
+    .glass-card {
+        width: 100%; /* Take full width on small screens */
+    }
+
+    .happy {
+        background-attachment: scroll; /* Fixes lag issues on mobile browsers */
+    }
 }
 
 /* --- 6. Footer --- */
 footer {
-    background-color: #311b92; /* Deep purple */
+    background-color: #1a237e;
     color: white;
     text-align: center;
-    padding: 20px;
-    font-size: 14px;
+    padding: 30px;
+    font-size: 0.9rem;
 }
