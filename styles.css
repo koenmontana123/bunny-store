@@ -1,145 +1,152 @@
-/* 1. Global Reset & Typography */
-body {
-    background-color: #f8f9fa; 
-    color: #2d3436;
-    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    line-height: 1.6;
+/* --- 1. Global Reset & Base Styles --- */
+* {
     margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Ensures padding doesn't break layout width */
 }
 
-/* 2. Header & Navigation */
-header {
-    background-color: #008080;
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f2f5;
+    overflow-x: hidden;
+}
+
+/* --- 2. Welcome Banner (Marquee) --- */
+.welcome-banner {
+    background-color: #00796b; /* Darker teal for contrast */
     color: white;
-    padding: 1.5rem 5%;
+    padding: 8px 0;
+    font-size: 14px;
+}
+
+/* --- 3. Header & Navigation (Flexbox Layout) --- */
+header {
+    background-color: #009688; /* Primary Teal */
+    color: white;
+    padding: 16px 5%; /* 5% padding keeps items away from screen edges */
+}
+
+.top-nav {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* Pushes Nav to far LEFT and Logo to far RIGHT */
     align-items: center;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+nav {
+    display: flex;
+    gap: 15px; /* Space between the Home and Cart buttons */
 }
 
 nav a {
-    background-color: rgba(255, 255, 255, 0.1);
-    color: white;
-    padding: 8px 16px;
+    background-color: #fff3e0; /* Soft peach */
+    color: #6d4c41;           /* Dark brown */
+    padding: 10px 22px;
     text-decoration: none;
-    border-radius: 6px;
-    font-weight: 600;
-    margin-left: 10px;
-    transition: all 0.3s ease;
+    border-radius: 30px;      /* Rounded pill shape */
+    font-size: 14px;
+    font-weight: bold;
+    transition: transform 0.2s, background-color 0.3s;
 }
 
 nav a:hover {
-    background-color: white; 
-    color: #008080;
-    transform: translateY(-2px);
+    background-color: #ffe0b2;
+    transform: scale(1.05);   /* Subtle pop-out effect */
 }
 
-/* 3. Hero Section */
+/* --- 4. Main Section (Background & Hero) --- */
 .happy {
-    text-align: center;
-    padding: 60px 20px;
-    background-color: #ffffff;
-    border-bottom: 1px solid #eee;
-}
-
-.happy h2 {
-    font-size: 2.2rem;
-    color: #008080;
-    margin-bottom: 10px;
-}
-
-/* 4. Products Grid */
-#products {
-    padding: 40px 5%;
-    display: grid;
-    gap: 30px;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-}
-
-/* 5. Card Design */
-.card {
-    background-color: white;
-    border-radius: 15px;
-    overflow: hidden; /* Clips the image corners to the radius */
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    min-height: 80vh;
     display: flex;
-    flex-direction: column; /* Stacks image and content */
+    align-items: center;
+    justify-content: center;
+    /* High-quality background image with a dark overlay */
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1300&q=80');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Parallax effect */
 }
 
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+/* --- 5. Glassmorphism Product Cards --- */
+.unique-container {
+    display: flex;
+    flex-wrap: wrap; /* Allows cards to drop to next line on mobile */
+    gap: 30px;
+    justify-content: center;
+    padding: 20px;
 }
 
-.card img {
-    width: 100%;
+.glass-card {
+    background: rgba(255, 255, 255, 0.15); /* Semi-transparent white */
+    backdrop-filter: blur(12px);          /* The "frosted glass" effect */
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    width: 300px;
+    overflow: hidden;
+    color: white;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    transition: 0.3s ease;
+}
+
+.glass-card:hover {
+    transform: translateY(-10px);
+}
+
+.card-image {
+    position: relative;
     height: 200px;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
 }
 
-/* 6. Refined Card Content */
-.card-content {
-    padding: 20px;
-    display: flex;
-    flex-direction: column; /* Keeps items stacked but organized */
-    flex-grow: 1; /* Ensures content fills the card */
-}
-
-.card-content h3 {
-    margin: 0 0 5px 0;
-    font-size: 1.3rem;
-    color: #008080;
-}
-
-.card-content p {
-    color: #636e72;
-    margin: 0 0 10px 0;
-    /* One-line constraint */
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-/* 7. View Details Link (Now clearly visible) */
-.view-details {
-    display: inline-block;
-    font-size: 0.85rem;
-    color: #008080;
-    text-decoration: none;
-    margin-bottom: 15px; /* Creates space above the button */
-    font-weight: bold;
-    width: fit-content;
-}
-
-.view-details:hover {
-    text-decoration: underline;
-}
-
-/* 8. Button Styling */
-.card-content button {
-    background-color: #008080;
-    color: white;
-    border: none;
-    padding: 12px 20px;
+.price-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: #009688;
+    padding: 6px 12px;
     border-radius: 8px;
-    cursor: pointer;
-    width: 100%;
     font-weight: bold;
-    margin-top: auto; /* Pushes button to the bottom if description is short */
-    transition: background-color 0.3s ease; 
+    font-size: 14px;
 }
 
-.card-content button:hover {
-    background-color: #005a5a;
+.card-details {
+    padding: 20px;
+    text-align: center;
 }
 
-/* 9. Footer */
+.unique-btn {
+    display: block;
+    margin-top: 15px;
+    padding: 12px;
+    background-color: white;
+    color: #009688;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.unique-btn:hover {
+    background-color: #009688;
+    color: white;
+}
+
+/* --- 6. Footer --- */
 footer {
-    background-color: #2d3436;
+    background-color: #311b92; /* Deep purple */
     color: white;
     text-align: center;
-    padding: 30px;
-    margin-top: 40px;
+    padding: 20px;
+    font-size: 14px;
 }

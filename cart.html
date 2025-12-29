@@ -1,61 +1,91 @@
-<!DOCTYPE html> 
-<html>
-    <head>
-        <title>Happy Shopping - Your Cart</title>
-        <link rel="cart.css" href="styles.css">
-    </head>
-    <body>
-        <header>
-            <h1>happy store</h1>
-            <nav>
-                <a href="#">home</a>
-                <a href="#">products</a>
-                <a href="#">cart</a>
-            </nav>
-        </header>
-
-        <section class="happy">
-            <h2>Your Shopping Cart</h2>
-            <p>Review your items and proceed to checkout.</p>
-        </section>
-
-        <main class="cart-container">
-            <h3>Items in Your Cart</h3>
-
-            <div class="cart-item">
-                <div class="item-info">
-                    <h4>Super Gadget Pro</h4>
-                    <p>Price: $199.99 | Quantity: 1</p>
-                </div>
-                <div class="item-actions">
-                    <span>$199.99</span>
-                    <button class="remove-btn">Remove</button>
-                </div>
-            </div>
-
-            <div class="cart-item">
-                <div class="item-info">
-                    <h4>Mega Accessory Pack</h4>
-                    <p>Price: $49.50 | Quantity: 2</p>
-                </div>
-                <div class="item-actions">
-                    <span>$99.00</span>
-                    <button class="remove-btn">Remove</button>
-                </div>
-            </div>
-
-            <div class="cart-summary">
-                <div>Subtotal: $298.99</div>
-                <div>Shipping: $10.00</div>
-                <div class="total-price">Total: $308.99</div>
-                
-                <button class="checkout-btn">Proceed to Checkout</button>
-            </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Cart | World Store Kenya</title>
+    <link rel="stylesheet" href="cart.css">
+</head>
+<body>
+    
+    <header>
+        <div class="top-nav">
+            <h1 class="logo"><a href="./index.html" style="text-decoration: none; color: #f68b1e;">World Store</a></h1>
             
-        </main>
+            <div class="search-container">
+                <input type="text" placeholder="Search grains, cereals, beans...">
+                <button type="submit">SEARCH</button>
+            </div>
+            <nav>
+                <a href="./index.html">Home</a>
+                <a href="./cart.html" class="active">Cart</a>
+            </nav>
+        </div>
+    </header>
 
-        <footer>
-            <p>@copyright 2025 minishop</p>
-        </footer>
-    </body>
+    <main class="cart-wrapper">
+        <div class="cart-items-section">
+            <p style="font-size: 12px; color: #777; margin-bottom: 10px;">Home > Cart</p>
+            
+            <h2>Cart (2)</h2>
+            
+            <div class="cart-item">
+                <div class="item-main">
+                    <img src="https://static.eos.com/wp-content/uploads/2020/03/1_1920%D1%85600.jpg" alt="Fresh Cereals">
+                    <div class="item-details">
+                        <p class="product-name">Fresh Cereals - Grade A Local Grains</p>
+                        <p class="stock-status">In Stock</p>
+                        <button class="remove-btn">REMOVE</button>
+                    </div>
+                </div>
+                <div class="item-price-qty">
+                    <p class="current-price">KSh 12,900</p>
+                    <p class="discount-price">KSh 15,000</p>
+                    <div class="qty-selector">
+                        <button>-</button>
+                        <span>1</span>
+                        <button>+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cart-item">
+                <div class="item-main">
+                    <img src="https://static.eos.com/wp-content/uploads/2020/03/1_1920%D1%85600.jpg" alt="Organic Beans">
+                    <div class="item-details">
+                        <p class="product-name">Organic Beans - 50kg Sack</p>
+                        <p class="stock-status">In Stock</p>
+                        <button class="remove-btn">REMOVE</button>
+                    </div>
+                </div>
+                <div class="item-price-qty">
+                    <p class="current-price">KSh 8,500</p>
+                    <div class="qty-selector">
+                        <button>-</button>
+                        <span>1</span>
+                        <button>+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <aside class="order-summary">
+            <h3>CART SUMMARY</h3>
+            <hr>
+            <div class="summary-line">
+                <span>Subtotal</span>
+                <span class="price-total">KSh 21,400</span>
+            </div>
+            <p class="notice">Delivery fees not included yet.</p>
+            <button class="checkout-now">CHECKOUT (KSh 21,400)</button>
+            
+            <a href="./index.html" style="display: block; text-align: center; margin-top: 15px; color: #f68b1e; text-decoration: none; font-weight: bold;">CONTINUE SHOPPING</a>
+        </aside>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 World Store Kenya. Reliable Grains for your Family.</p>
+    </footer>
+
+</body>
 </html>

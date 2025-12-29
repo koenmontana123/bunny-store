@@ -1,117 +1,184 @@
-/*/*
- * Cyber-Glow Theme CSS File (styles.css) - V2.0
- * Includes CSS Variables, advanced hover effects, and responsive design updates.
- */
-
-/* --- 0. CSS Variables (Themed Colors) --- */
-:root {
-    --color-dark-base: #03041c; /* Deep Navy/Black */
-    --color-neon-cyan: #00ffff;
-    --color-neon-magenta: #ff00ff;
-    --color-text-light: #e0e0e0;
-    --color-panel-bg: rgba(30, 0, 40, 0.6); /* Semi-transparent panel background */
-}
-
-/* --- 1. Base Setup (Quantum Grid Flow Animation) --- */
+/* General Base Styles */
 body {
-    background-color: var(--color-dark-base); 
-    overflow-x: hidden; 
     margin: 0;
-    min-height: 100vh; 
-    width: 100vw;
-    /* Neon Glow & Grid Pattern */
-    background-image:
-        radial-gradient(at 20% 70%, var(--color-neon-magenta)40, transparent 60%), 
-        radial-gradient(at 80% 30%, var(--color-neon-cyan)30, transparent 50%), 
-        repeating-linear-gradient(0deg, #1f013305, #1f013305 2px, transparent 2px, transparent 100px); 
-    background-size: 
-        150% 150%, 
-        100% 100%, 
-        100% 100%;
-    animation: flow 20s infinite linear alternate;
-    font-family: 'Consolas', 'Courier New', monospace; 
-    color: var(--color-text-light); 
-    text-rendering: optimizeLegibility; /* Improves font display */
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background-color: #f1f1f1;
+    color: #333;
 }
 
-/* Futuristic Text Selection */
-::selection {
-    background: var(--color-neon-magenta);
-    color: var(--color-dark-base);
-}
-
-@keyframes flow {
-    0% {
-        background-position: 0% 0%, 0% 0%, 0% 0%;
-    }
-    100% {
-        background-position: 100% 100%, 0% 0%, 0% 0%;
-    }
-}
-
-/* --- 2. Header & Navigation (Responsive Update) --- */
+/* Header & Navigation (Jumia Style) */
 header {
-    background: rgba(17, 17, 17, 0.8); 
-    color: var(--color-neon-cyan); 
+    background-color: #ffffff;
+    padding: 15px 5%;
+    border-bottom: 1px solid #ddd;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.top-nav {
     display: flex;
-    flex-wrap: wrap; /* Allows wrapping on smaller screens */
-    align-items: center;
     justify-content: space-between;
-    padding: 15px 40px;
-    border-bottom: 2px solid var(--color-neon-magenta); 
-    box-shadow: 0 0 15px rgba(0, 255, 255, 0.4); 
-    z-index: 1000;
+    align-items: center;
 }
 
-header h1 {
+.logo {
+    color: #f68b1e; /* Iconic Orange */
+    font-size: 24px;
     margin: 0;
-    color: var(--color-neon-cyan);
-    font-size: 1.5em;
-    text-shadow: 0 0 5px var(--color-neon-cyan);
-    flex-basis: 100%; 
-    text-align: center;
-    margin-bottom: 10px;
-}
-@media (min-width: 768px) {
-    header h1 {
-        flex-basis: auto;
-        text-align: left;
-        margin-bottom: 0;
-    }
 }
 
-nav {
-    flex-grow: 1;
-    text-align: right;
+.search-container {
+    display: flex;
+    flex: 1;
+    margin: 0 30px;
+}
+
+.search-container input {
     width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px 0 0 4px;
+}
+
+.search-container button {
+    background: #f68b1e;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
 }
 
 nav a {
-    color: var(--color-neon-magenta); 
-    margin: 0 10px;
     text-decoration: none;
+    color: #333;
     font-weight: bold;
-    text-transform: uppercase;
-    transition: color 0.3s ease, text-shadow 0.3s ease;
+    margin-left: 15px;
 }
 
-nav a:hover {
-    color: var(--color-neon-cyan); 
-    text-shadow: 0 0 8px var(--color-neon-cyan); 
+nav a.active {
+    color: #f68b1e;
 }
 
+/* Main Layout Wrapper */
+.cart-wrapper {
+    display: flex;
+    max-width: 1200px;
+    margin: 20px auto;
+    gap: 20px;
+    padding: 0 20px;
+}
 
+/* Left Section: Items */
+.cart-items-section {
+    flex: 2;
+    background: white;
+    padding: 20px;
+    border-radius: 4px;
+}
 
-.happy {
-    background: linear-gradient(90deg, var(--color-neon-magenta), var(--color-neon-cyan)); 
-    color: var(--color-dark-base); 
-    text-align: center;
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0;
+    border-top: 1px solid #eee;
+}
+
+.item-main {
+    display: flex;
+    gap: 20px;
+}
+
+.item-main img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.product-name {
+    font-weight: 500;
+    margin: 0 0 5px 0;
+}
+
+.stock-status {
+    color: #27ae60;
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+
+.remove-btn {
+    background: none;
+    border: none;
+    color: #f68b1e;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 0;
+}
+
+/* Right Section: Pricing */
+.item-price-qty {
+    text-align: right;
+}
+
+.current-price {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.discount-price {
+    text-decoration: line-through;
+    color: #777;
+    font-size: 14px;
+}
+
+.qty-selector {
+    margin-top: 15px;
+}
+
+.qty-selector button {
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    background: #f9f9f9;
+    cursor: pointer;
+}
+
+/* Summary Sidebar */
+.order-summary {
+    flex: 1;
+    background: white;
+    padding: 20px;
+    border-radius: 4px;
+    height: fit-content;
+}
+
+.summary-line {
+    display: flex;
+    justify-content: space-between;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+.checkout-now {
+    width: 100%;
     padding: 15px;
-    margin: 30px auto;
-    max-width: 800px;
-    border-radius: 5px;
-    font-weight: 900;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    box-shadow: 0 0 20px rgba(255, 0, 255, 0.7); 
+    background-color: #f68b1e;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+footer {
+    text-align: center;
+    padding: 30px;
+    background: #333;
+    color: white;
+    margin-top: 40px;
 }
