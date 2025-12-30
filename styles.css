@@ -1,203 +1,100 @@
-/* --- 1. Global Reset & Performance --- */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box; /* Crucial for KCSE: prevents padding from expanding element width */
-}
+/* General Reset */
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
 
-body {
-    font-family: 'Segoe UI', Arial, sans-serif;
-    background-color: #f0f2f5;
-    color: #333;
-    line-height: 1.6;
-    overflow-x: hidden;
-}
+body { background-color: #f3e5f5; color: #333; }
 
-/* --- 2. Navigation & Header --- */
-.welcome-banner {
-    background-color: #00796b;
-    color: white;
-    padding: 10px 0;
-    font-size: 0.9rem;
-    text-align: center;
-}
-
-header {
-    background-color: #009688;
-    padding: 15px 5%;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-.top-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo {
-    font-size: 1.8rem;
-    font-weight: bold;
-    color: white;
-}
-
-nav {
-    display: flex;
-    gap: 12px;
-}
+/* Header & Nav */
+header { background-color: #008080; color: white; padding: 15px; display: flex; justify-content: space-between; align-items: center;}
+.top-nav { width: 100%; max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+.logo { font-size: 1.5rem; font-weight: bold; }
 
 nav a {
-    background-color: #fff3e0;
-    color: #6d4c41;
-    padding: 8px 20px;
+    background-color: #f5f5dc; 
+    color: #5a4e3c;            
+    padding: 10px 16px;
     text-decoration: none;
-    border-radius: 25px;
-    font-size: 0.9rem;
+    border-radius: 6px;
     font-weight: bold;
+    margin-left: 10px;
     transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 nav a:hover {
-    background-color: #ffe0b2;
-    transform: translateY(-2px);
+    background-color: #ffe4e1; 
+    color: #4b0082;            
+    transform: scale(1.05);   
 }
 
-/* --- Cart link & icon --- */
-.cart-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background-color: #fff3e0;
-    color: #6d4c41;
-    padding: 8px 12px;
-    text-decoration: none;
-    border-radius: 25px;
-    font-size: 0.9rem;
-    font-weight: bold;
-    transition: all 0.3s ease;
-}
-
-.cart-link:hover {
-    background-color: #ffe0b2;
-    transform: translateY(-2px);
-}
-
-.cart-link .cart-icon svg {
-    width: 20px;
-    height: 20px;
-    fill: #6d4c41;
-}
-
-/* hide textual label on very small screens to save space */
-.cart-text { display: none; }
-@media screen and (min-width: 600px) {
-    .cart-text { display: inline; }
-}
-
-/* --- 3. Hero Section (Parallax) --- */
+/* Hero Section */
 .happy {
-    min-height: 75vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
-                url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1300&q=80');
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?auto=format&fit=crop&w=1000&q=80');
     background-size: cover;
     background-position: center;
-    background-attachment: fixed; /* Parallax effect */
-}
-
-/* --- 4. Product Grid & Glass Cards --- */
-.unique-container {
+    height: 300px;
     display: flex;
-    flex-wrap: wrap; /* Secret for Android: allows stacking */
-    gap: 30px;
     justify-content: center;
-    padding: 40px 20px;
+    align-items: center;
+    text-align: center;
+}
+.happy h1 { color: white; font-size: 3rem; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); }
+
+/* Products Grid */
+.unique-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    padding: 0 20px;
+    margin-bottom: 80px; /* Space for footer */
 }
 
+/* Cards */
 .glass-card {
-    background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(15px); /* The frosted glass effect */
-    -webkit-backdrop-filter: blur(15px); /* Safari support */
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 20px;
-    width: 320px;
+    background: white;
+    border-radius: 12px;
     overflow: hidden;
-    position: relative; /* Essential for the price-badge position */
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    position: relative;
+    transition: transform 0.3s;
 }
-
-.glass-card:hover {
-    transform: scale(1.03);
-}
-
-.card-image img {
-    width: 100%;
-    height: 220px;
-    object-fit: cover;
-}
+.glass-card:hover { transform: translateY(-5px); }
 
 .price-badge {
     position: absolute;
-    top: 15px;
-    right: 15px;
-    background: #009688;
+    top: 10px;
+    right: 10px;
+    background: #f68b1e; /* Jumia Orange */
     color: white;
-    padding: 6px 14px;
-    border-radius: 8px;
+    padding: 5px 10px;
+    border-radius: 20px;
     font-weight: bold;
-    font-size: 0.85rem;
-    z-index: 10;
 }
 
-.card-details {
-    padding: 25px;
-    text-align: center;
-    color: white;
-}
+.card-image img { width: 100%; height: 200px; object-fit: cover; }
+.card-details { padding: 15px; text-align: center; }
+.card-details h3 { margin-bottom: 10px; color: #444; }
 
 .unique-btn {
-    display: inline-block;
-    margin-top: 15px;
-    padding: 12px 30px;
-    background-color: white;
-    color: #009688;
-    text-decoration: none;
-    border-radius: 10px;
-    font-weight: bold;
-    transition: 0.3s;
+    background-color: #008080;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 1rem;
+    transition: background 0.2s;
 }
+.unique-btn:hover { background-color: #006666; }
 
-.unique-btn:hover {
-    background-color: #e0f2f1;
-}
-
-/* --- 5. Mobile Responsiveness (Android) --- */
-@media screen and (max-width: 600px) {
-    header {
-        padding: 15px 2%;
-    }
-
-    .top-nav {
-        flex-direction: column; /* Stack logo and nav vertically */
-        gap: 15px;
-    }
-
-    .glass-card {
-        width: 100%; /* Take full width on small screens */
-    }
-
-    .happy {
-        background-attachment: scroll; /* Fixes lag issues on mobile browsers */
-    }
-}
-
-/* --- 6. Footer --- */
 footer {
-    background-color: #1a237e;
+    background-color: #4b0082;
     color: white;
     text-align: center;
-    padding: 30px;
-    font-size: 0.9rem;
+    padding: 15px;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
 }

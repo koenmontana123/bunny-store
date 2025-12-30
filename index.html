@@ -1,107 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>World Store | Unique Grains</title>
-
-  <!-- PWA & Icons -->
-  <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#009688">
-  <meta name="mobile-web-app-capable" content="yes">
-  <link rel="apple-touch-icon" href="icon.png">
-
-  <!-- Styles -->
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <title>World Store — Unique Grains</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-
 <body>
 
-  <!-- Welcome Banner -->
-  <div class="welcome-banner">
-    <marquee behavior="scroll" direction="left">
-      <strong>FREE Delivery on your first order!</strong> Welcome to World Store.
-    </marquee>
-  </div>
-
-  <!-- Header -->
-  <header>
+<header>
     <div class="top-nav">
-      <h1 class="logo">
-        <a href="index.html" class="logo-link">World Store</a>
-      </h1>
-
-      <nav>
-        <a href="index.html" class="active">Home</a>
-
-        <!-- Cart Link -->
-        <a href="cart/cart.html" class="cart-link" aria-label="Open cart">
-          <span class="cart-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="20" height="20" xmlns="http://www.w3.org/2000/svg">
-              <path d="M7 4h-2l-1 2h2l3.6 7.59-1.35 2.45C8.89 16.37 9.5 17 10.28 17h7.44v-2H10.28l1.1-2h6.02c.75 0 1.4-.41 1.75-1.03l3.24-6.03-1.86-.99L19.4 9H9.21L7 4zM10 20a2 2 0 100 4 2 2 0 000-4zm8 0a2 2 0 100 4 2 2 0 000-4z"/>
-            </svg>
-          </span>
-          <span class="cart-text">Cart</span>
-        </a>
-      </nav>
+        <div class="logo">World Store</div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="cart.html" class="cart-link">
+                <i class="fas fa-shopping-cart"></i> Cart <span id="cart-count">(0)</span>
+            </a>
+        </nav>
     </div>
-  </header>
+</header>
 
-  <!-- Main Content -->
-  <main class="happy">
-    <div class="unique-container">
+<section class="happy">
+    <h1>Premium Grains</h1>
+</section>
 
-      <!-- Product 1 -->
-      <div class="glass-card">
+<main class="unique-container">
+    <div class="glass-card">
+        <div class="price-badge">KSh 12,900</div>
         <div class="card-image">
-          <img src="https://static.eos.com/wp-content/uploads/2020/03/1_1920%D1%85600.jpg"
-               alt="Premium Cereals - Grade A grains"
-               loading="lazy">
-          <div class="price-badge">KSh 12,900</div>
+            <img src="https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=400&q=80" alt="Cereals">
         </div>
-
         <div class="card-details">
-          <h3>Premium Cereals</h3>
-          <p>Farm fresh Grade A grains.</p>
-          <a href="cart/cart.html" class="unique-btn">Add to Cart</a>
+            <h3>Premium Cereals</h3>
+            <button type="button" class="unique-btn add-to-cart" data-name="Premium Cereals" data-price="12900">Add to Cart</button>
         </div>
-      </div>
-
-      <!-- Product 2 -->
-      <div class="glass-card">
-        <div class="card-image">
-          <img src="https://static.eos.com/wp-content/uploads/2020/03/1_1920%D1%85600.jpg"
-               alt="Organic Beans - 50kg sack"
-               loading="lazy">
-          <div class="price-badge">KSh 8,500</div>
-        </div>
-
-        <div class="card-details">
-          <h3>Organic Beans</h3>
-          <p>Rich in protein and fiber.</p>
-          <a href="cart/cart.html" class="unique-btn">Add to Cart</a>
-        </div>
-      </div>
-
     </div>
-  </main>
 
-  <!-- Footer -->
-  <footer>
-    <p>© 2025 World Store Kenya. Reliable Grains for your Family.</p>
-  </footer>
+    <div class="glass-card">
+        <div class="price-badge">KSh 8,500</div>
+        <div class="card-image">
+            <img src="https://images.unsplash.com/photo-1551462147-37885acc3c41?auto=format&fit=crop&w=400&q=80" alt="Beans">
+        </div>
+        <div class="card-details">
+            <h3>Organic Beans</h3>
+            <button type="button" class="unique-btn add-to-cart" data-name="Organic Beans" data-price="8500">Add to Cart</button>
+        </div>
+    </div>
+</main>
 
-  <!-- Service Worker -->
-  <script>
-    if ("serviceWorker" in navigator) {
-      window.addEventListener("load", () => {
-        navigator.serviceWorker
-          .register("sw.js")
-          .then(reg => console.log("Service Worker Registered!", reg))
-          .catch(err => console.error("Service Worker Registration Failed!", err));
-      });
-    }
-  </script>
+<footer>
+    <p>&copy; 2025 World Store Unique Grains. All Rights Reserved.</p>
+</footer>
 
+<script src="script.js"></script>
 </body>
 </html>
