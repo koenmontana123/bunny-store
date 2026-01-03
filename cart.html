@@ -1,172 +1,32 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
+    <title>Your Cart — World Store</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Cart</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
-    <style>
-        /* --- COPYING YOUR JUMIA STYLES EXACTLY --- */
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: Roboto, sans-serif; }
-        body { background-color: #f1f1f2; color: #282828; }
-        a { text-decoration: none; color: inherit; }
-        
-        /* Header */
-        header { background-color: #fff; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); padding: 10px 0; margin-bottom: 20px; }
-        .header-container { max-width: 1180px; margin: 0 auto; padding: 0 10px; display: flex; align-items: center; justify-content: space-between; }
-        .logo { font-size: 24px; font-weight: bold; color: #282828; }
-        .logo span { color: #f68b1e; }
-        
-        /* Layout */
-        .container { max-width: 1180px; margin: 0 auto; padding: 0 10px; display: flex; gap: 20px; flex-wrap: wrap; }
-        
-        /* Left Column */
-        .cart-section { flex: 3; background: #fff; border-radius: 4px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); padding: 16px; min-height: 200px; }
-        .cart-header { font-size: 20px; font-weight: 500; border-bottom: 1px solid #ededed; padding-bottom: 10px; margin-bottom: 15px; }
-        
-        /* Dynamic Item Styles */
-        .cart-item { display: flex; gap: 15px; border-bottom: 1px solid #ededed; padding-bottom: 15px; margin-bottom: 15px; }
-        .item-img { width: 80px; height: 80px; object-fit: contain; }
-        .item-details { flex: 1; }
-        .item-name { font-size: 14px; line-height: 1.4; margin-bottom: 5px; font-weight: 500;}
-        .seller-info { font-size: 12px; color: #75757a; margin-bottom: 8px; }
-        .item-qty { font-size: 13px; color: #282828; margin-bottom: 8px; background: #eee; padding: 2px 8px; border-radius: 4px; display: inline-block;}
-        
-        .item-actions button { background: none; border: none; color: #f68b1e; cursor: pointer; font-size: 13px; display: flex; align-items: center; gap: 5px; margin-top: 5px; }
-        .item-actions button:hover { background-color: #fdf0e0; border-radius: 4px; padding: 4px; }
-        
-        .item-price-block { text-align: right; }
-        .current-price { font-size: 16px; font-weight: bold; display: block; }
-
-        /* Summary Section */
-        .summary-section { flex: 1; min-width: 250px; }
-        .summary-card { background: #fff; border-radius: 4px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); padding: 12px; margin-bottom: 10px; }
-        .summary-header { font-size: 14px; font-weight: 500; border-bottom: 1px solid #ededed; padding-bottom: 8px; margin-bottom: 10px; }
-        .summary-row { display: flex; justify-content: space-between; font-size: 14px; margin-bottom: 10px; }
-        .total-row { display: flex; justify-content: space-between; font-size: 16px; font-weight: bold; border-top: 1px solid #ededed; padding-top: 10px; margin-top: 5px; }
-        
-        .checkout-btn { background-color: #f68b1e; color: white; width: 100%; padding: 12px; border: none; border-radius: 4px; font-weight: 500; font-size: 14px; cursor: pointer; box-shadow: 0 4px 8px 0 rgba(246,139,30,.2); text-transform: uppercase; }
-        .checkout-btn:hover { background-color: #e67e17; }
-        
-        .empty-cart-msg { text-align: center; padding: 40px; color: #75757a; display: none; }
-        
-        @media (max-width: 768px) {
-            .container { flex-direction: column; }
-            .item-price-block { text-align: left; margin-top: 10px; }
-            .cart-item { flex-direction: column; }
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    <header>
-        <div class="header-container">
-            <div class="logo">
-                <a href="index.html">
-                    <i class="fas fa-store" style="color:#f68b1e;"></i> World<span>Store</span>
-                </a>
-            </div>
-            <div><i class="fas fa-user"></i> Login</div>
-        </div>
-    </header>
-
-    <div class="container">
-        
-        <div class="cart-section">
-            <div class="cart-header">Cart (<span id="cart-count-header">0</span>)</div>
-            
-            <div id="cart-items-container"></div>
-
-            <div id="empty-cart" class="empty-cart-msg">
-                <i class="fas fa-shopping-cart" style="font-size: 40px; margin-bottom: 20px;"></i>
-                <p>Your cart is empty!</p>
-                <p><a href="index.html" style="color:#f68b1e; text-decoration:underline;">Browse our products</a></p>
-            </div>
-        </div>
-
-        <div class="summary-section">
-            <div class="summary-card">
-                <div class="summary-header">CART SUMMARY</div>
-                <div class="summary-row">
-                    <span>Subtotal</span>
-                    <span id="subtotal">KSh 0</span>
-                </div>
-                <div class="summary-row" style="font-size: 12px; color:#75757a;">
-                    <span>Delivery fees not included yet.</span>
-                </div>
-                <div class="total-row">
-                    <span>Total</span>
-                    <span id="total" style="color: #f68b1e;">KSh 0</span>
-                </div>
-            </div>
-            <button class="checkout-btn">CHECKOUT (<span id="btn-total">KSh 0</span>)</button>
-        </div>
-
+<header>
+    <div class="top-nav">
+        <div class="logo">World Store</div>
+        <nav>
+            <a href="index.html">Home</a>
+        </nav>
     </div>
+</header>
 
-    <script>
-        // Reads from LocalStorage and renders the Jumia-style HTML
-        function renderCart() {
-            const cart = JSON.parse(localStorage.getItem('cart')) || [];
-            const container = document.getElementById('cart-items-container');
-            const emptyMsg = document.getElementById('empty-cart');
-            
-            container.innerHTML = ''; // Clear current display
-            let grandTotal = 0;
-            let totalItems = 0;
+<main style="padding: 30px">
+    <h2>Your Cart</h2>
+    <div id="cart-container"></div>
+    <h3 id="cart-total"></h3>
+</main>
 
-            if (cart.length === 0) {
-                emptyMsg.style.display = 'block';
-                document.querySelector('.checkout-btn').style.opacity = '0.5';
-            } else {
-                emptyMsg.style.display = 'none';
-                document.querySelector('.checkout-btn').style.opacity = '1';
+<footer>
+    <p>&copy; 2025 World Store Unique Grains. All Rights Reserved.</p>
+</footer>
 
-                cart.forEach((item, index) => {
-                    const itemTotal = item.price * item.quantity;
-                    grandTotal += itemTotal;
-                    totalItems += item.quantity;
-
-                    // Create HTML for one item
-                    const itemHTML = `
-                        <div class="cart-item">
-                            <img src="${item.image}" alt="${item.name}" class="item-img">
-                            <div class="item-details">
-                                <div class="item-name">${item.name}</div>
-                                <div class="seller-info">World Store Official</div>
-                                <div class="item-qty">Qty: ${item.quantity}</div>
-                                <div class="item-actions">
-                                    <button onclick="removeItem(${index})"><i class="fas fa-trash-alt"></i> REMOVE</button>
-                                </div>
-                            </div>
-                            <div class="item-price-block">
-                                <span class="current-price">KSh ${itemTotal.toLocaleString()}</span>
-                                <span class="old-price" style="font-size:11px">Unit: ${item.price.toLocaleString()}</span>
-                            </div>
-                        </div>
-                    `;
-                    container.innerHTML += itemHTML;
-                });
-            }
-
-            // Update Summaries
-            const formattedTotal = 'KSh ' + grandTotal.toLocaleString();
-            document.getElementById('subtotal').textContent = formattedTotal;
-            document.getElementById('total').textContent = formattedTotal;
-            document.getElementById('btn-total').textContent = formattedTotal;
-            document.getElementById('cart-count-header').textContent = totalItems;
-        }
-
-        function removeItem(index) {
-            let cart = JSON.parse(localStorage.getItem('cart')) || [];
-            cart.splice(index, 1); // Remove item at that index
-            localStorage.setItem('cart', JSON.stringify(cart)); // Save back to storage
-            renderCart(); // Re-render page
-        }
-
-        // Initialize
-        document.addEventListener('DOMContentLoaded', renderCart);
-    </script>
+<script src="cart.js"></script>
 </body>
 </html>
